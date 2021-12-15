@@ -1,11 +1,13 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = () => {
   const mode = process.env.NODE_ENV
   const isProduction = mode === 'production'
   return {
+    context: path.join(__dirname, 'your-app'),
     mode,
     devServer: {
       historyApiFallback: true,
