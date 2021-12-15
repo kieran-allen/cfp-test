@@ -1,8 +1,15 @@
 import { render } from 'react-dom'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { App } from './App'
 
 import './style.css'
 
 const anchor = document.getElementById('app')
+const queryClient = new QueryClient()
 
-render(<App />, anchor)
+render(
+  <QueryClientProvider client={queryClient}>
+    <App />
+  </QueryClientProvider>,
+  anchor,
+)
