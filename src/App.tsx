@@ -1,8 +1,9 @@
 import clsx from 'clsx'
-import { useConfig } from './context/ConfigContext'
+import { useConfig, useFlag } from './context/ConfigContext'
 
 export function App() {
   const { isLoading, data } = useConfig()
+  const showCountryPicker = useFlag('countryPickerEnabled')
 
   if (isLoading) {
     return (
@@ -17,7 +18,11 @@ export function App() {
       <h1>
         This is {data?.env} {JSON.stringify(data)}
       </h1>
-      <p>Oh wow!!! I am a new feature... I have CSP headers while sandbox and main do not...</p>
+      <p>
+        Oh wow!!! I am a new feature... I have CSP headers while sandbox and
+        main do not...
+      </p>
+      {showCountryPicker && <p>I am a god damn country picker</p>}
     </div>
   )
 }
