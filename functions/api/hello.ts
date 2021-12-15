@@ -1,5 +1,5 @@
 export const onRequestGet: PagesFunction = context => {
-  const ref = context.request.referrer
+  const host = context.request.headers.get('Host')
 
-  return new Response(ref)
+  return new Response(`${host};;host`)
 }
