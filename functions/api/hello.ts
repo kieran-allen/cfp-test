@@ -1,3 +1,5 @@
-export async function onRequestGet() {
-  return new Response('Hello, world!')
+export const onRequestGet: PagesFunction = context => {
+  const ref = context.request.referrer
+
+  return new Response(ref)
 }
