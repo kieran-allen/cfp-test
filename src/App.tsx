@@ -13,8 +13,11 @@ export function App() {
   }
 
   return (
-    <h1 className={clsx('bg-gray-100', 'm-8', 'rounded', 'p-8', 'shadow')}>
-      This is {data?.env} {JSON.stringify(data)}
-    </h1>
+    <div className={clsx('bg-gray-100', 'm-8', 'rounded', 'p-8', 'shadow')}>
+      <h1>
+        This is {data?.env} {JSON.stringify(data)}
+      </h1>
+      <p>Oh wow!!! I am a new feature... I have CSP headers while sandbox and main do not...</p>
+    </div>
   )
 }
