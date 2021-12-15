@@ -1,18 +1,8 @@
 import clsx from 'clsx'
-import { useQuery } from 'react-query'
+import { useConfig } from './context/ConfigContext'
 
 export function App() {
-  const { isLoading, data } = useQuery(
-    'config',
-    async () => {
-      const res = await fetch('/api/config')
-      return await res.json()
-    },
-    {
-      staleTime: Infinity,
-      cacheTime: Infinity,
-    },
-  )
+  const { isLoading, data } = useConfig()
 
   if (isLoading) {
     return (
@@ -24,7 +14,7 @@ export function App() {
 
   return (
     <h1 className={clsx('bg-gray-100', 'm-8', 'rounded', 'p-8', 'shadow')}>
-      This is main {JSON.stringify(data)}
+      This is {data?.env} {JSON.stringify(data)}
     </h1>
   )
 }

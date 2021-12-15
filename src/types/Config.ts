@@ -1,6 +1,14 @@
+export enum ENV {
+  DEV = 'development',
+  BOX = 'sandbox',
+  PROD = 'production',
+}
+
 export type Config = {
   api: string
+  env: ENV
   flags: {
-    msw: boolean
+    mswEnabled: boolean
+    countryPickerEnabled: boolean
   }
 }
