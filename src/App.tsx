@@ -24,7 +24,7 @@ export function App() {
 
   return (
     <h1 className={clsx('bg-gray-100', 'm-8', 'rounded', 'p-8', 'shadow')}>
-      This is main {JSON.stringify(data)}
+      This is dev branch {JSON.stringify(data)}
     </h1>
   )
 }
