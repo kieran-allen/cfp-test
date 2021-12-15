@@ -19,8 +19,7 @@ export function App() {
         This is {data?.env} {JSON.stringify(data)}
       </h1>
       <p>
-        Oh wow!!! I am a new feature... I have CSP headers while sandbox and
-        main do not...
+        Oh wow!!! I am a new feature...
       </p>
       {showCountryPicker && <p>I am a god damn country picker</p>}
     </div>
