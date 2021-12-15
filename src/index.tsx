@@ -1,6 +1,7 @@
 import { render } from 'react-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { App } from './App'
+import { ConfigProvider } from './context/ConfigContext'
 
 import './style.css'
 
@@ -9,7 +10,9 @@ const queryClient = new QueryClient()
 
 render(
   <QueryClientProvider client={queryClient}>
-    <App />
+    <ConfigProvider>
+      <App />
+    </ConfigProvider>
   </QueryClientProvider>,
   anchor,
 )
