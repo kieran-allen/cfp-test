@@ -12,13 +12,21 @@ export const onRequestGet: PagesFunction = ({ request: { headers } }) => {
 
   switch (host) {
     case 'dev.qwonk.xyz':
-      return new Response(JSON.stringify(development))
+      return new Response(JSON.stringify(development), {
+        headers: { 'Content-Type': 'application/json' },
+      })
     case 'sandbox.qwonk.xyz':
-      return new Response(JSON.stringify(sandbox))
+      return new Response(JSON.stringify(sandbox), {
+        headers: { 'Content-Type': 'application/json' },
+      })
     case 'qwonk.xyz':
     case 'www.qwonk.xyz':
-      return new Response(JSON.stringify(production))
+      return new Response(JSON.stringify(production), {
+        headers: { 'Content-Type': 'application/json' },
+      })
     default:
-      return new Response(JSON.stringify(development))
+      return new Response(JSON.stringify(development), {
+        headers: { 'Content-Type': 'application/json' },
+      })
   }
 }
