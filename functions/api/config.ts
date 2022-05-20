@@ -1,6 +1,6 @@
 import { development, production, sandbox } from '../../src/constants/config'
 import { v4 as uuid } from 'uuid'
-import * as tlSigning from 'truelayer-signing'
+import axios from 'axios'
 
 type Host =
   | 'dev.qwonk.xyz'
@@ -12,7 +12,7 @@ type Host =
 export const onRequestGet: PagesFunction = ({ request: { headers } }) => {
   const host: Host = headers.get('Host') as Host
 
-  console.info(tlSigning)
+  console.info(axios)
 
   switch (host) {
     case 'dev.qwonk.xyz':
