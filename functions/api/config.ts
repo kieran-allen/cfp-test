@@ -1,5 +1,6 @@
 import { development, production, sandbox } from '../../src/constants/config'
 import { v4 as uuid } from 'uuid'
+import * as tlSigning from 'truelayer-signing'
 
 type Host =
   | 'dev.qwonk.xyz'
@@ -11,22 +12,24 @@ type Host =
 export const onRequestGet: PagesFunction = ({ request: { headers } }) => {
   const host: Host = headers.get('Host') as Host
 
+  console.info(tlSigning)
+
   switch (host) {
     case 'dev.qwonk.xyz':
       return new Response(JSON.stringify({ ...development, uuid: uuid() }), {
         headers: { 'Content-Type': 'application/json' },
       })
     case 'sandbox.qwonk.xyz':
-      return new Response(JSON.stringify(sandbox), {
+      return new Response(JSON.stringify({ ...sandbox, uuid: uuid() }), {
         headers: { 'Content-Type': 'application/json' },
       })
     case 'qwonk.xyz':
     case 'www.qwonk.xyz':
-      return new Response(JSON.stringify(production), {
+      return new Response(JSON.stringify({ production, uuid: uuid() }), {
         headers: { 'Content-Type': 'application/json' },
       })
     default:
-      return new Response(JSON.stringify(development), {
+      return new Response(JSON.stringify({ ...development, uuid: uuid() }), {
         headers: { 'Content-Type': 'application/json' },
       })
   }
