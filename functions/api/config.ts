@@ -1,4 +1,5 @@
 import { development, production, sandbox } from '../../src/constants/config'
+import { v4 as uuid } from 'uuid'
 
 type Host =
   | 'dev.qwonk.xyz'
@@ -12,7 +13,7 @@ export const onRequestGet: PagesFunction = ({ request: { headers } }) => {
 
   switch (host) {
     case 'dev.qwonk.xyz':
-      return new Response(JSON.stringify(development), {
+      return new Response(JSON.stringify({ ...development, uuid: uuid() }), {
         headers: { 'Content-Type': 'application/json' },
       })
     case 'sandbox.qwonk.xyz':
